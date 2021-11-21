@@ -59,7 +59,7 @@ static void CreateDbIfNotExists(IHost host)
                     var context = services.GetRequiredService<SchoolContext>();
                     var context2 = services.GetRequiredService<PostContext>();
                     //context.Database.EnsureCreated();
-                    DbInitializer.Initialize(context);
+                    DbInitializer.Initialize(context2);
                     //DbInitializer.Initialize(context2);
                     
                 }

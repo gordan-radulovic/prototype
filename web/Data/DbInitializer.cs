@@ -9,12 +9,29 @@ namespace web.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(SchoolContext context)
+        public static void Initialize(PostContext context)
         {
             context.Database.EnsureCreated();
 
+            if (context.Posts.Any())
+            {
+                return;   // DB has been seeded
+            }
+
+            var posts = new Posts[]
+            {
+                new Posts {UserID=1, PostID=1, Content="To je prva testna objava", PostTime = DateTime.Now},
+                new Posts {UserID=2, PostID=2, Content="To je druga testna objava" , PostTime = DateTime.Now},
+                new Posts {UserID=3, PostID=3, Content="To je trejta testna objava" , PostTime = DateTime.Now},
+                new Posts {UserID=1, PostID=4, Content="To je četrta testna objava" , PostTime = DateTime.Now},
+                new Posts {UserID=2, PostID=5, Content="To je peta testna objava" , PostTime = DateTime.Now}
+            };
+
+            context.Posts.AddRange(posts);
+            context.SaveChanges();
+
             // Look for any students.
-            if (context.Students.Any())
+            /*if (context.Students.Any())
             {
                 return;   // DB has been seeded
             }
@@ -118,7 +135,7 @@ namespace web.Data
 
 
 
-            context.SaveChanges();
+            context.SaveChanges();*/
         }
     }
 }

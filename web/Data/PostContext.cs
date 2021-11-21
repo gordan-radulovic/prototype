@@ -16,6 +16,7 @@ namespace web.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); 
+            modelBuilder.Entity<Posts>().HasKey(p => new {p.PostID});
             modelBuilder.Entity<Posts>().ToTable("Posts");
         }
     }
