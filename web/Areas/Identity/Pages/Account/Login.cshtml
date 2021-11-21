@@ -1,0 +1,19 @@
+﻿@page
+@model LoginModel
+
+@{
+    Layout = "/Views/Shared/Login_SignUp.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+    <div class="form_login">
+            <form id="account" method="post" class="form_login">
+                    <input asp-for="Input.Email" id = "nesto" class="form-control" autocomplete="username" aria-required="true" placeholder="E-mail"/>
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Password"/>
+                    <button id="login-submit" type="submit" class="primary_button">Log in</button>
+            </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

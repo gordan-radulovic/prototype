@@ -1,0 +1,21 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "";
+    Layout = "/Views/Shared/Login_SignUp.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="form">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="E-mail"/>
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Password "/>
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirm password"/>
+            <button id="registerSubmit" type="submit" class="primary_button">Sign Up</button>
+        </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
