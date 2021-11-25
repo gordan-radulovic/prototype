@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/web.styles.css" asp-append-version="true" />
 </head>
-<body>
+
     <header>
         <partial class="nav-item" name="_LoginPartial" />
     </header>
@@ -18,11 +18,6 @@
         </main>
     </div>
     
-    <footer class="border-top footer text-muted">
-        <div class="">
-            &copy; 2021 - Buddy System Authors- Luka Janežič, Gordan Radulović -  <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     
    
 
@@ -30,5 +25,5 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+
 </html>

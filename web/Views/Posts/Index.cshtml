@@ -1,9 +1,9 @@
 @model IEnumerable<web.Models.Posts>
 
 
+<table class="posts_table">
 
-
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <!--<td>
                 @Html.DisplayFor(modelItem => item.UserID)

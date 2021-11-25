@@ -58,7 +58,7 @@ namespace web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PostID,UserID,Content,PostTime")] Posts posts)
+        public async Task<IActionResult> Create([Bind("PostID,UserID,Content,PostTime=DateTime.Now")] Posts posts)
         {
             if (ModelState.IsValid)
             {

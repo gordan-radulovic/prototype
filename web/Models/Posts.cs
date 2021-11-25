@@ -11,6 +11,7 @@ namespace web.Models{
         public string? Content { get; set; }
         public DateTime PostTime { get; set; }
 
+        
 
     }
     
