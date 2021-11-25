@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using web.Data;
 using web.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace web.Controllers
 {
@@ -24,6 +25,7 @@ namespace web.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
+            //var user = await _userManager.FindByEmailAsync(User.Identity.Name);
             return View(await _context.Posts.ToListAsync());
         }
 

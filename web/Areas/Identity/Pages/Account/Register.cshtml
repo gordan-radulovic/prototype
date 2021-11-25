@@ -7,8 +7,10 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<div class="form">
+<div class="form" id="register">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form">
+                <input asp-for="Input.FirstName" class="form-control" autocomplete="first_name" aria-required="true" placeholder="First Name"/>
+                <input asp-for="Input.LastName" class="form-control" autocomplete="last_name" aria-required="true" placeholder="Last Name"/>
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="E-mail"/>
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Password "/>
                 <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirm password"/>

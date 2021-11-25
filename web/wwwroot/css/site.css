@@ -13,6 +13,8 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 
 }
 
@@ -59,7 +61,7 @@ body {
   padding: none;
 }
 .form_login{
-  height: 480px;
+  height: 400px;
   background: radial-gradient(circle, #24cfaa, #26c5a3, #28bb9c, #29b294, #2aa88d);
   margin: auto;
   width: 400px;
@@ -246,4 +248,13 @@ body {
 #logout{
   width:100%;
   height: 100%;
+}
+
+footer{
+  margin-top: auto;
+  position: absolute;
+}
+
+#register{
+  height: 590px;
 }
