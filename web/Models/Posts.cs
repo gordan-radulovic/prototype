@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace web.Models{
     public class Posts{
@@ -11,7 +13,10 @@ namespace web.Models{
         public string? Content { get; set; }
         public DateTime PostTime { get; set; }
 
-        
+        ApplicationUser userManager;
+        public Posts(){
+            PostTime = DateTime.Now;
+        }
 
     }
     

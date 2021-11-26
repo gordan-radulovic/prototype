@@ -1,8 +1,9 @@
 @model web.Models.Posts
-
+@using Microsoft.AspNetCore.Identity
 @{
     ViewData["Title"] = "Create";
 }
+@inject UserManager<ApplicationUser> UserManager
 
 <h1>Create</h1>
 
@@ -27,12 +28,11 @@
                 <input asp-for="Content" class="form-control" />
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
-            <!--
+            
             <div class="form-group">
-                <label asp-for="PostTime" class="control-label"></label>
-                <input asp-for="PostTime" class="form-control" />
+                @Html.HiddenFor(model => model.PostTime, new { @value = DateTime.Today, @readonly = "readonly", @hidden = "true"})
                 <span asp-validation-for="PostTime" class="text-danger"></span>
-            </div>-->
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
