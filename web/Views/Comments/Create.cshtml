@@ -1,0 +1,39 @@
+@model web.Models.Comments
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="posts_container">
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="CommentID" class="form-control" placeholder="CommentID"/>
+                <span asp-validation-for="CommentID" class="text-danger"></span>
+                
+                <input asp-for="UserID" class="form-control" placeholder="UserID"/>
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            
+                <input asp-for="PostID" class="form-control" placeholder="PostID"/>
+                <span asp-validation-for="PostID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <input asp-for="Content" class="content_area" placeholder="Content"/>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.HiddenFor(model => model.PostTime, new { @value = DateTime.Today, @readonly = "readonly", @hidden = "true"})
+                <span asp-validation-for="PostTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="create_button" />
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+

@@ -11,6 +11,7 @@ namespace web.Data
         }
 
         public DbSet<Posts> Posts { get; set; }
+        public DbSet<Comments> Comments {get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -18,6 +19,9 @@ namespace web.Data
             base.OnModelCreating(modelBuilder); 
             modelBuilder.Entity<Posts>().HasKey(p => new {p.PostID});
             modelBuilder.Entity<Posts>().ToTable("Posts");
+
+            modelBuilder.Entity<Comments>().HasKey(c => new {c.CommentID});
+            modelBuilder.Entity<Comments>().ToTable("Comments");
         }
     }
 }
