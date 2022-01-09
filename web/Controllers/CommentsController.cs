@@ -54,7 +54,7 @@ namespace web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CommentID,UserID,PostID,Content,PostTime")] Comments comments)
+        public async Task<IActionResult> Create([Bind("CommentID,UserID,PostID,Content,PostTime=DateTime.Now")] Comments comments)
         {
             if (ModelState.IsValid)
             {

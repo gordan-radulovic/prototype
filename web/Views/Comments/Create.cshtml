@@ -1,8 +1,11 @@
 @model web.Models.Comments
-
+@using Microsoft.AspNetCore.Identity
 @{
     ViewData["Title"] = "Create";
 }
+@inject UserManager<ApplicationUser> UserManager
+
+
 <div class="posts_container">
 <div class="row">
     <div class="col-md-4">
