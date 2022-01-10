@@ -6,7 +6,7 @@ using web.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("SchoolContext");
-var connectionString2 = builder.Configuration.GetConnectionString("AzureContext");
+var connectionString2 = builder.Configuration.GetConnectionString("PostContext");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
