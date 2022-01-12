@@ -13,6 +13,9 @@ namespace web.Data
         public DbSet<Posts> Posts { get; set; }
         public DbSet<Comments> Comments {get; set; }
 
+        public DbSet<Message> Messages {get; set; }
+        public DbSet<Chat> Chats {get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,5 +26,8 @@ namespace web.Data
             modelBuilder.Entity<Comments>().HasKey(c => new {c.CommentID});
             modelBuilder.Entity<Comments>().ToTable("Comments");
         }
+
+
+        public DbSet<web.Models.Message> Message { get; set; }
     }
 }
