@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity;
 namespace web.Controllers
 {
     [Authorize]
-    [ApiKeyAuth]
+    //[ApiKeyAuth]
     public class PostsController : Controller
     {
         private readonly PostContext _context;
