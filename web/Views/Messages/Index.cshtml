@@ -47,20 +47,36 @@
 </table-->
 <table class="message_menu_body">
 
-    <div class = "navigation_bar">
+    <!--div class = "navigation_bar">
 
-    </div>
+    </div-->
 
     <div class = "message_menu">
         <div class="sidemenu">
             <a href= "#" class = "room-button"> First Room </a>
-            <a href= "#" class = "room-button"> + </a>
+            <a href= "#" class = "room-button"><strong>+</strong> </a>
         </div>
         <div class="chat">
-            <div class="new-room">
-                <form asp-action="CreateRoom">
-                    <button id ="create-room">Create</button>
+            <div class="chat-body">
+                <div class="message">
+                    <header>Test1</header>
+                    <p> This is a test message</p>
+                    <footer>15:42</footeer>
+                </div>
+
+                <div class="message">
+                    <header>Test2</header>
+                    <p> This is a test message number 2</p>
+                    <footer>15:45</footeer>
+                </div>
+            </div>
+            <div class="chat-input">
+                <form class ="send_message">
+                    <input type="text" />
+                    <button>Sendy</button>
                 </form>
+                
+
             </div>
         </div>
     </div>
