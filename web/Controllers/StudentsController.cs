@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using web.Data;
 using web.Models;
 using Microsoft.AspNetCore.Authorization;
+using web.Filters;
 
 namespace web.Controllers
 {
+    [ApiKeyAuth]
 
     public class StudentsController : Controller
     {
