@@ -12,47 +12,47 @@ namespace web.Controllers_Api
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CommentsApiController : ControllerBase
+    public class CommentssApiController : ControllerBase
     {
         private readonly PostContext _context;
 
-        public CommentsApiController(PostContext context)
+        public CommentssApiController(PostContext context)
         {
             _context = context;
         }
 
-        // GET: api/CommentsApi
+        // GET: api/CommentssApi
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Comments>>> GetComments()
         {
             return await _context.Comments.ToListAsync();
         }
 
-        // GET: api/CommentsApi/5
+        // GET: api/CommentssApi/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Comments>> GetComments(int id)
         {
-            var Comments = await _context.Comments.FindAsync(id);
+            var comments = await _context.Comments.FindAsync(id);
 
-            if (Comments == null)
+            if (comments == null)
             {
                 return NotFound();
             }
 
-            return Comments;
+            return comments;
         }
 
-        // PUT: api/CommentsApi/5
+        // PUT: api/CommentssApi/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutComments(int id, Comments Comments)
+        public async Task<IActionResult> PutComments(int id, Comments comments)
         {
-            if (id != Comments.CommentID)
+            if (id != comments.CommentID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(Comments).State = EntityState.Modified;
+            _context.Entry(comments).State = EntityState.Modified;
 
             try
             {
@@ -73,19 +73,19 @@ namespace web.Controllers_Api
             return NoContent();
         }
 
-        // POST: api/CommentsApi
+        // POST: api/CommentssApi
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Comments>> PostComments(Comments Comments)
+        public async Task<ActionResult<Comments>> PostComments(Comments comments)
         {
-            _context.Comments.Add(Comments);
+            _context.Comments.Add(comments);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (CommentsExists(Comments.CommentID))
+                if (CommentsExists(comments.CommentID))
                 {
                     return Conflict();
                 }
@@ -95,20 +95,20 @@ namespace web.Controllers_Api
                 }
             }
 
-            return CreatedAtAction("GetComments", new { id = Comments.CommentID }, Comments);
+            return CreatedAtAction("GetComments", new { id = comments.CommentID }, comments);
         }
 
-        // DELETE: api/CommentsApi/5
+        // DELETE: api/CommentssApi/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteComments(int id)
         {
-            var Comments = await _context.Comments.FindAsync(id);
-            if (Comments == null)
+            var comments = await _context.Comments.FindAsync(id);
+            if (comments == null)
             {
                 return NotFound();
             }
 
-            _context.Comments.Remove(Comments);
+            _context.Comments.Remove(comments);
             await _context.SaveChangesAsync();
 
             return NoContent();
