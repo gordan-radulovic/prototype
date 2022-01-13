@@ -20,7 +20,10 @@ namespace web.Data
             modelBuilder.Entity<Posts>().HasKey(p => new {p.PostID});
             modelBuilder.Entity<Posts>().ToTable("Posts");
 
-            modelBuilder.Entity<Comments>().HasKey(c => new {c.CommentID});
+            modelBuilder.Entity<Comments>(c=>{
+                c.Property<int>("CommentID");
+                c.HasKey("CommentID");
+                });
             modelBuilder.Entity<Comments>().ToTable("Comments");
         }
     }
