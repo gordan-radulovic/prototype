@@ -11,5 +11,7 @@ namespace web.Models{
         public String Text { get; set; }
         public DateTime TimeStamp { get; set; }
 
+        public int ChatID { get; set; }
+
     }
 }

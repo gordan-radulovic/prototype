@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<!--h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -44,4 +44,27 @@
         </tr>
 }
     </tbody>
+</table-->
+<table class="message_menu_body">
+
+    <div class = "navigation_bar">
+
+    </div>
+
+    <div class = "message_menu">
+        <div class="sidemenu">
+            <a href= "#" class = "room-button"> First Room </a>
+            <a href= "#" class = "room-button"> + </a>
+        </div>
+        <div class="chat">
+            <div class="new-room">
+                <form asp-action="CreateRoom">
+                    <button id ="create-room">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </table>
+
+<script src ="~/js/site.js"></script>

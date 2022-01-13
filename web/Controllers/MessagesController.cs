@@ -152,5 +152,17 @@ namespace web.Controllers
         {
             return _context.Message.Any(e => e.ID == id);
         }
+
+        [HttpPost]
+
+        public async Task<IActionResult> CreateRoom (String name){
+            _context.Chats.Add(new Chat{
+                Name = name,
+
+            });
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
