@@ -28,8 +28,8 @@
                             @Html.DisplayFor(modelItem => item.Content)
                         </div>
                     </div>
-                    <a asp-action="Create" asp-controller="Comments" class ="primary_button" style="margin:10px; text-decoration: none; height: 60px; display: block; justify-content: center; padding-top: 20px;">New Comment</a>
-                    <a asp-action="Index" asp-controller="Comments" class ="primary_button" style="margin:10px; text-decoration: none; height: 60px; display: block; justify-content: center; padding-top: 20px;">View Comments</a>
+                    <a asp-action="Create" id="@item.PostID"asp-controller="Comments" class ="primary_button" style="margin:10px; text-decoration: none; height: 60px; display: block; justify-content: center; padding-top: 20px;">New Comment</a>
+                    <a asp-action="Index" id="@item.PostID" asp-controller="Comments" class ="primary_button" style="margin:10px; text-decoration: none; height: 60px; display: block; justify-content: center; padding-top: 20px;">View Comments</a>
                     
             </td>
 

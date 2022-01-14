@@ -30,7 +30,7 @@
     <tbody>
 @foreach (var item in Model) {
     var m = Model.ElementAt(1).PostID;
-    if(item.PostID == m){
+    if(item.PostID > 0){
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.UserID)
