@@ -1,6 +1,11 @@
 @model IEnumerable<web.Models.Posts>
 
 
+    <a class = "primary_button" asp-action="Create" style="margin:10px; text-decoration: none; height: 60px; display: block; justify-content: center; padding-top: 20px;">
+        New Post
+    </a>
+
+
 <table class="posts_table">
 
     @foreach (var item in Model) {
@@ -23,8 +28,9 @@
                             @Html.DisplayFor(modelItem => item.Content)
                         </div>
                     </div>
-                    @Html.ActionLink("Comment", "Create", "Comments")
-                    @Html.ActionLink("View Comments", "Index", "Comments")
+                    <a asp-action="Create" asp-controller="Comments" class ="primary_button" style="margin:10px; text-decoration: none; height: 60px; display: block; justify-content: center; padding-top: 20px;">New Comment</a>
+                    <a asp-action="Index" asp-controller="Comments" class ="primary_button" style="margin:10px; text-decoration: none; height: 60px; display: block; justify-content: center; padding-top: 20px;">View Comments</a>
+                    
             </td>
 
             <!--td>

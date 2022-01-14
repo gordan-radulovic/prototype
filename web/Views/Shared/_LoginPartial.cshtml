@@ -9,7 +9,10 @@
         <a class="" asp-area="" asp-controller="Posts" asp-action="Index">Posts</a>
     </li>
     <li class="nav-item">
-        <a class="" asp-area="" asp-controller="Posts" asp-action="Create">New Post</a>
+        <a class=""  asp-controller="Messages" asp-action="Index">Messages</a>
+    </li>
+    <li class="nav-item">
+        <a class="" asp-area="" asp-controller="Chats" asp-action="Index">Chats</a>
     </li>
 @if (SignInManager.IsSignedIn(User))
 {
@@ -25,7 +28,7 @@
 else
 {
     <li class="nav-item">
-        <a class="" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        <a class="" id="register1" asp-area="Identity" asp-page="/Account/Register">Register</a>
     </li>
     <li class="nav-item">
         <a class="" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>

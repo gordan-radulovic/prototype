@@ -10,24 +10,22 @@ using web.Models;
 
 namespace web.Controllers
 {
-    public class CommentsController : Controller
+    public class ChatsController : Controller
     {
         private readonly PostContext _context;
 
-        public CommentsController(PostContext context)
+        public ChatsController(PostContext context)
         {
             _context = context;
         }
 
-        // GET: Comments
-        public async Task<IActionResult> Index(int comID)
+        // GET: Chats
+        public async Task<IActionResult> Index()
         {
-            var comments = await _context.Comments
-                .FirstOrDefaultAsync(m => m.CommentID == comID);
-            return View(await _context.Comments.ToListAsync());
+            return View(await _context.Chats.ToListAsync());
         }
 
-        // GET: Comments/Details/5
+        // GET: Chats/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,39 +33,39 @@ namespace web.Controllers
                 return NotFound();
             }
 
-            var comments = await _context.Comments
-                .FirstOrDefaultAsync(m => m.CommentID == id);
-            if (comments == null)
+            var chat = await _context.Chats
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (chat == null)
             {
                 return NotFound();
             }
 
-            return View(comments);
+            return View(chat);
         }
 
-        // GET: Comments/Create
+        // GET: Chats/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Comments/Create
+        // POST: Chats/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CommentID,UserID,PostID,Content,PostTime=DateTime.Now")] Comments comments)
+        public async Task<IActionResult> Create([Bind("ID,Name,TimeStamp")] Chat chat)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(comments);
+                _context.Add(chat);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(comments);
+            return View(chat);
         }
 
-        // GET: Comments/Edit/5
+        // GET: Chats/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +73,22 @@ namespace web.Controllers
                 return NotFound();
             }
 
-            var comments = await _context.Comments.FindAsync(id);
-            if (comments == null)
+            var chat = await _context.Chats.FindAsync(id);
+            if (chat == null)
             {
                 return NotFound();
             }
-            return View(comments);
+            return View(chat);
         }
 
-        // POST: Comments/Edit/5
+        // POST: Chats/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CommentID,UserID,PostID,Content,PostTime")] Comments comments)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,TimeStamp")] Chat chat)
         {
-            if (id != comments.CommentID)
+            if (id != chat.ID)
             {
                 return NotFound();
             }
@@ -99,12 +97,12 @@ namespace web.Controllers
             {
                 try
                 {
-                    _context.Update(comments);
+                    _context.Update(chat);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CommentsExists(comments.CommentID))
+                    if (!ChatExists(chat.ID))
                     {
                         return NotFound();
                     }
@@ -115,10 +113,10 @@ namespace web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(comments);
+            return View(chat);
         }
 
-        // GET: Comments/Delete/5
+        // GET: Chats/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +124,30 @@ namespace web.Controllers
                 return NotFound();
             }
 
-            var comments = await _context.Comments
-                .FirstOrDefaultAsync(m => m.CommentID == id);
-            if (comments == null)
+            var chat = await _context.Chats
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (chat == null)
             {
                 return NotFound();
             }
 
-            return View(comments);
+            return View(chat);
         }
 
-        // POST: Comments/Delete/5
+        // POST: Chats/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var comments = await _context.Comments.FindAsync(id);
-            _context.Comments.Remove(comments);
+            var chat = await _context.Chats.FindAsync(id);
+            _context.Chats.Remove(chat);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CommentsExists(int id)
+        private bool ChatExists(int id)
         {
-            return _context.Comments.Any(e => e.CommentID == id);
+            return _context.Chats.Any(e => e.ID == id);
         }
     }
 }

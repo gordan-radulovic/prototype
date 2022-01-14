@@ -322,3 +322,166 @@ footer{
   color: white;
   padding: 5px 5px 5px 5px;
 }
+
+.message_menu_body{
+  margin: 0;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation_bar{
+  background-color: #342742;
+  height: 50px;
+  z-index: 100;
+  box-shadow: 0 1px 2px 0 #333;
+
+}
+
+.message_menu{
+  width: 100%;
+  background-color: red;
+  flex-grow: 1;
+  height: 600px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.sidemenu{
+  background-color: #443554;
+  width: 100px;
+  z-index: 50;
+  box-shadow: 1px 0 2px 0 #333;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chat{
+  background-color: #eee;
+  flex-grow: 1;
+}
+
+.room-button{
+
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0.5rem 1rem 0;
+  height: 68px;
+
+  box-shadow: 0 1px 3px 0 #222;
+  background-color: #57446b;
+
+  border-radius: 5px;
+}
+
+.room-button:hover{
+
+  box-shadow: 0 2px 3px 1px #222;
+
+
+}
+
+.chat-body{
+  height: 500px;
+  background-color: green;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.chat-input{
+  background-color: red;
+  height: 75px;
+}
+
+.message{
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.2 rem;
+}
+
+.message > * {
+  padding: 0.2rem;
+}
+
+.message > header{
+  min-width: 120px;
+  text-align: right;
+}
+.message > p{
+  margin: 0;
+  flex-grow: 5;
+}
+
+.message > footer{
+  position: relative;
+  flex-grow: 1;
+  width: 80px;
+  text-align: center;
+  background-color: green;
+  float: left;
+}
+
+.modal{
+  display: none;
+  position: fixed;
+  height: 100vh;
+  min-width: 100vw;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  background-color: rgba(0.2,0.2,0.2,0.8);
+}
+
+.modal.active{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.modal-body{
+  min-width: 300px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: #57446b;
+  position: relative;
+
+}
+
+.modal_body > header {
+  color: white;
+  font-size: 24px;
+  
+}
+
+.modal-body > * {
+  margin-top: 0.5rem;
+}
+
+.modal-body > div > input {
+  width: 100%;
+}
+
+.modal-body > footer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+}
+
+.modal-body > .close_modal{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  margin-top: 0;
+
+}

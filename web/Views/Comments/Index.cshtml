@@ -29,6 +29,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+    var m = Model.ElementAt(1).PostID;
+    if(item.PostID == m){
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.UserID)
@@ -48,6 +50,7 @@
                 <a asp-action="Delete" asp-route-id="@item.CommentID">Delete</a>
             </td>
         </tr>
+    }
 }
     </tbody>
 </table>

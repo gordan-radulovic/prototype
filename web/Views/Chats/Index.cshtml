@@ -1,0 +1,13 @@
+@model IEnumerable<web.Models.Chat>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="sidemenu">   
+    @foreach (var chat in Model)
+    {
+        <a href= "#" class = "room-button"> @chat.Name </a>
+                
+    }
+</div>

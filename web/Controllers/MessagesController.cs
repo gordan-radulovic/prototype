@@ -7,27 +7,39 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using web.Data;
 using web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace web.Controllers
 {
-    public class CommentsController : Controller
+    [Authorize]
+    public class MessagesController : Controller
     {
+        
         private readonly PostContext _context;
 
-        public CommentsController(PostContext context)
+        public MessagesController(PostContext context)
         {
             _context = context;
         }
 
-        // GET: Comments
-        public async Task<IActionResult> Index(int comID)
+        // GET: Messages
+        public async Task<IActionResult> Index()
         {
-            var comments = await _context.Comments
-                .FirstOrDefaultAsync(m => m.CommentID == comID);
-            return View(await _context.Comments.ToListAsync());
+            return View(await _context.Message.ToListAsync());
         }
 
-        // GET: Comments/Details/5
+        [HttpPost]
+        public async Task <IActionResult> CreateRoom(string name){
+
+            _context.Chats.Add(new Chat{
+                Name = name
+            });
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        // GET: Messages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,39 +47,39 @@ namespace web.Controllers
                 return NotFound();
             }
 
-            var comments = await _context.Comments
-                .FirstOrDefaultAsync(m => m.CommentID == id);
-            if (comments == null)
+            var message = await _context.Message
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (message == null)
             {
                 return NotFound();
             }
 
-            return View(comments);
+            return View(message);
         }
 
-        // GET: Comments/Create
+        // GET: Messages/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Comments/Create
+        // POST: Messages/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CommentID,UserID,PostID,Content,PostTime=DateTime.Now")] Comments comments)
+        public async Task<IActionResult> Create([Bind("ID,Name,Text,TimeStamp")] Message message)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(comments);
+                _context.Add(message);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(comments);
+            return View(message);
         }
 
-        // GET: Comments/Edit/5
+        // GET: Messages/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +87,22 @@ namespace web.Controllers
                 return NotFound();
             }
 
-            var comments = await _context.Comments.FindAsync(id);
-            if (comments == null)
+            var message = await _context.Message.FindAsync(id);
+            if (message == null)
             {
                 return NotFound();
             }
-            return View(comments);
+            return View(message);
         }
 
-        // POST: Comments/Edit/5
+        // POST: Messages/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CommentID,UserID,PostID,Content,PostTime")] Comments comments)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Text,TimeStamp")] Message message)
         {
-            if (id != comments.CommentID)
+            if (id != message.ID)
             {
                 return NotFound();
             }
@@ -99,12 +111,12 @@ namespace web.Controllers
             {
                 try
                 {
-                    _context.Update(comments);
+                    _context.Update(message);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CommentsExists(comments.CommentID))
+                    if (!MessageExists(message.ID))
                     {
                         return NotFound();
                     }
@@ -115,10 +127,10 @@ namespace web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(comments);
+            return View(message);
         }
 
-        // GET: Comments/Delete/5
+        // GET: Messages/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +138,42 @@ namespace web.Controllers
                 return NotFound();
             }
 
-            var comments = await _context.Comments
-                .FirstOrDefaultAsync(m => m.CommentID == id);
-            if (comments == null)
+            var message = await _context.Message
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (message == null)
             {
                 return NotFound();
             }
 
-            return View(comments);
+            return View(message);
         }
 
-        // POST: Comments/Delete/5
+        // POST: Messages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var comments = await _context.Comments.FindAsync(id);
-            _context.Comments.Remove(comments);
+            var message = await _context.Message.FindAsync(id);
+            _context.Message.Remove(message);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CommentsExists(int id)
+        private bool MessageExists(int id)
         {
-            return _context.Comments.Any(e => e.CommentID == id);
+            return _context.Message.Any(e => e.ID == id);
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> Creat1eRoom (String name){
+            _context.Chats.Add(new Chat{
+                Name = name,
+
+            });
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

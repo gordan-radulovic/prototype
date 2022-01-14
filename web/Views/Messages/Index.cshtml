@@ -1,0 +1,64 @@
+@using web.Models;
+@model IEnumerable<Message>
+
+
+
+<!--h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="message_menu_body">
+
+    <!--div class = "navigation_bar">
+
+    </div-->
+
+    <div class = "message_menu">
+        <vc:room></vc:room>
+        <div class="chat">
+            <div class="chat-body">
+                <div class="message">
+                    <header><strong>Test1</strong></header>
+                    <p> This is a test message</p>
+                    <footer>15:42</footeer>
+                </div>
+
+                <div class="message">
+                    <header><strong>Test2</strong></header>
+                    <p> This is a test message number 2</p>
+                    <footer>15:45</footeer>
+                </div>
+
+                <div class = "modal" id = "create-room-modal">
+                    <div class = "modal-body">
+                        <form asp-action="CreateRoom" asp-controller="Messages" class ="">
+                            
+                            <button class ="close_modal" type="button" onclick="closeModal()">X</button> 
+                            <header>Create Room</header>
+                            <div>
+                                <input name = "name">
+                            </div>
+                            <footer><button>Create</button></footer>
+
+
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="chat-input">
+                <form class ="send_message">
+                    <input type="text" />
+                    <button>Send</button>
+                </form>
+                
+
+            </div>
+        </div>
+    </div>
+
+</table>
+
+<script src ="~/js/site.js"></script>
