@@ -20,6 +20,16 @@ namespace web.Controllers
         }
 
         // GET: Chats
+
+        public async Task <IActionResult> CreateRoom(string name){
+
+            _context.Chats.Add(new Chat{
+                Name = name
+            });
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
         public async Task<IActionResult> Index()
         {
             return View(await _context.Chats.ToListAsync());
