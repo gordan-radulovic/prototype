@@ -20,8 +20,10 @@ namespace web.Controllers
         }
 
         // GET: Comments
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int comID)
         {
+            var comments = await _context.Comments
+                .FirstOrDefaultAsync(m => m.CommentID == comID);
             return View(await _context.Comments.ToListAsync());
         }
 

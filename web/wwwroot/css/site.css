@@ -427,3 +427,61 @@ footer{
   background-color: green;
   float: left;
 }
+
+.modal{
+  display: none;
+  position: fixed;
+  height: 100vh;
+  min-width: 100vw;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  background-color: rgba(0.2,0.2,0.2,0.8);
+}
+
+.modal.active{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.modal-body{
+  min-width: 300px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: #57446b;
+  position: relative;
+
+}
+
+.modal_body > header {
+  color: white;
+  font-size: 24px;
+  
+}
+
+.modal-body > * {
+  margin-top: 0.5rem;
+}
+
+.modal-body > div > input {
+  width: 100%;
+}
+
+.modal-body > footer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+}
+
+.modal-body > .close_modal{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  margin-top: 0;
+
+}

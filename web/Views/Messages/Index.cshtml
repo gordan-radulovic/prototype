@@ -1,4 +1,6 @@
-@model IEnumerable<web.Models.Message>
+@using web.Models;
+@model IEnumerable<Message>
+
 
 @{
     ViewData["Title"] = "Index";
@@ -9,42 +11,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Text)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TimeStamp)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Text)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeStamp)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table-->
+
 <table class="message_menu_body">
 
     <!--div class = "navigation_bar">
@@ -54,26 +21,43 @@
     <div class = "message_menu">
         <div class="sidemenu">
             <a href= "#" class = "room-button"> First Room </a>
-            <a href= "#" class = "room-button"><strong>+</strong> </a>
+            <a href= "#" class = "room-button" id="create-room"><strong>+</strong> </a>
         </div>
         <div class="chat">
             <div class="chat-body">
                 <div class="message">
-                    <header>Test1</header>
+                    <header><strong>Test1</strong></header>
                     <p> This is a test message</p>
                     <footer>15:42</footeer>
                 </div>
 
                 <div class="message">
-                    <header>Test2</header>
+                    <header><strong>Test2</strong></header>
                     <p> This is a test message number 2</p>
                     <footer>15:45</footeer>
+                </div>
+
+                <div class = "modal" id = "create-room-modal">
+                    <div class = "modal-body">
+                        <form asp-action="CreateRoom" asp-controller="Messages" class ="">
+                            
+                            <button class ="close_modal" type="button" onclick="closeModal()">X</button> 
+                            <header>Create Room</header>
+                            <div>
+                                <input name = "name">
+                            </div>
+                            <footer><button>Create</button></footer>
+
+
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
             <div class="chat-input">
                 <form class ="send_message">
                     <input type="text" />
-                    <button>Sendy</button>
+                    <button>Send</button>
                 </form>
                 
 

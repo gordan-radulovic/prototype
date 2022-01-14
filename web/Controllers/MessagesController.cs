@@ -28,6 +28,17 @@ namespace web.Controllers
             return View(await _context.Message.ToListAsync());
         }
 
+        [HttpPost]
+        public async Task <IActionResult> CreateRoom(string name){
+
+            _context.Chats.Add(new Chat{
+                Name = name
+            });
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
         // GET: Messages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -155,7 +166,7 @@ namespace web.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> CreateRoom (String name){
+        public async Task<IActionResult> Creat1eRoom (String name){
             _context.Chats.Add(new Chat{
                 Name = name,
 
